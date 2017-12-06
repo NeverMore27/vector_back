@@ -20,7 +20,7 @@ TEST_CASE("pop")
 }
 TEST_CASE("init list") 
 {
-    forward_list<int> s={1, 2, 3, 4, 5, 6};
+    forward_list<int> v={1, 2, 3, 4, 5, 6};
     int s = v.pop_back();
     REQUIRE(v.count() == 5);
     REQUIRE(s == 6);
