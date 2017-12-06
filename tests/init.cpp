@@ -7,7 +7,7 @@ SCENARIO("init")
 {
     forward_list<int> s;
     REQUIRE(s.count() == 0);
-    REQUIRE(!s.empty());
+    REQUIRE(s.empty());
 }
 
 SCENARIO("pop") 
