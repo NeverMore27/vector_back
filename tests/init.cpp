@@ -1,7 +1,7 @@
 
 #include <vector.hpp>
 #include <catch.hpp>
-#include "stack.hpp"
+
 
 TEST_CASE("init") 
 {
@@ -46,5 +46,11 @@ TEST_CASE("push")
 {
    forward_list<int> s = {1, 2, 5, 9};
    forward_list<int> m = {1, 2, 5, 9};
+    REQUIRE(m == s);
+}
+ TEST_CASE("move") 
+{
+   forward_list<int> s = {1, 2, 5, 9};
+   forward_list<int> m = move(s);
     REQUIRE(m == s);
 }
