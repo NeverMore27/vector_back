@@ -61,19 +61,19 @@ TEST_CASE("clear")
 {
    forward_list<int> s = {1, 2, 5, 9};
    forward_list<int> m = {1, 2, 5, 9};
-   REQUIRE(m == s);
+   REQUIRE((m == s));
 }
  TEST_CASE("move") 
 {
    forward_list<int> s = {1, 2, 5, 9};
    forward_list<int> m =std:: move(s);
-   REQUIRE(m == s);
+   REQUIRE((m == s));
 }
  TEST_CASE("copy") 
 {
    forward_list<int> s = {1, 2, 5, 9};
    forward_list<int> m =s;
-   REQUIRE(m == s);
+   REQUIRE((m == s));
 }
 TEST_CASE("back") 
 {
@@ -86,8 +86,8 @@ TEST_CASE("back")
    m.emplace_back(1);
    m.emplace_back(2);
    m.emplace_back(4);
-   REQUIRE(m == s);
-   REQUIRE(m2 == s);
+   REQUIRE((m == s));
+   REQUIRE((m2 == s));
 }
 TEST_CASE("front") 
 {
@@ -100,7 +100,7 @@ TEST_CASE("front")
    m.emplace_front(1);
    m.emplace_front(2);
    m.emplace_front(4);
-   REQUIRE(m == s);
-   REQUIRE(m2 == s);
+   REQUIRE((m == s));
+   REQUIRE((m2 == s));
 }
 
