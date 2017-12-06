@@ -44,15 +44,15 @@ TEST_CASE("init list")
 TEST_CASE("push") 
 {
    forward_list<int> s;
-    s.push(5);
-    s.push(7);
+    s.push_back(5);
+    s.push_front(7);
     REQUIRE(s.count() == 2);
 }
 TEST_CASE("clear") 
 {
    forward_list<int> s;
-   s.push(5);
-   s.push(7);
+   s.push_back(5);
+   s.push_front(7);
    s.clear();
    REQUIRE(s.count() == 0);
 }
