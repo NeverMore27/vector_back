@@ -1,70 +1,50 @@
 
 #include <vector.hpp>
 #include <catch.hpp>
-SCENARIO("NULL") 
-{
-	vector_t vector;
-	REQUIRE(vector.size() == 0);
-	REQUIRE(vector.capacity() == 0);
-}
-SCENARIO("size")
-{
-	vector_t vector;
-	REQUIRE(vector.size() == 0);
-	vector.push_back(2) ;
-	REQUIRE(vector.size() == 1);
+#include "stack.hpp"
 
-}
-SCENARIO("capacity")
+TEST_CASE("init") 
 {
-	vector_t vector;
-	REQUIRE(vector.capacity() == 0);
-	vector.push_back(2) ;
-	REQUIRE(vector.capacity() == 2);
+    forward_list<int> s;
+    REQUIRE(s.count() == 0);
+     REQUIRE(!s.empty());
+}
+TEST_CASE("pop") 
+{
+    forward_list<int> v={1, 2, 4);
+    int s = v.pop_back();
+	int z = v.pop_front();                     
+    REQUIRE(s== 4);
+    REQUIRE(s.count() == 1)                  
+    REQUIRE(z==1);
+}
+TEST_CASE("init list") 
+{
+    forward_list<int> s={1, 2, 3, 4, 5};
+    int s = v.pop_back();
+    REQUIRE(s.count() == 5);
+     s = v.pop_back();
+    REQUIRE(s.count() == 4);
+     s = v.pop_back();
+    REQUIRE(s.count() == 3);
+     s = v.pop_back();
+    REQUIRE(s.count() == 2);
+     s = v.pop_back();
+    REQUIRE(s.count() == 1);
+    REQUIRE(!v.empty());
+}
 
-}
-SCENARIO("param") 
+TEST_CASE("push") 
 {
-	vector_t vector(3);
-	REQUIRE(vector.size() == 3);
-	REQUIRE(vector.capacity() == 3);
+   forward_list<int> s;
+    s.push(5);
+    s.push(7);
+    REQUIRE(s.count() == 2);
 }
 
-SCENARIO("push") 
+ TEST_CASE("==") 
 {
-	vector_t vector(3);
-	vector.push_back(2) ;
-	REQUIRE(vector[3]==2);
-	REQUIRE(vector.size() == 4);
-	REQUIRE(vector.capacity() == 5);
-}
-SCENARIO("element") 
-{
-	vector_t vector(3);
-	vector.push_back(2) ;
-	REQUIRE(vector[3]==2);
-}
-SCENARIO("=") 
-{
-	vector_t vector1(3), vector;
-	vector1.push_back(2) ;
-	vector=vector1;
-	REQUIRE(vector[3]==2);
-	REQUIRE(vector.size()==4);
-	REQUIRE(vector.capacity()==5);
-}
-SCENARIO("Copy") 
-{
-	vector_t v (3);
-	vector_t vector(v);
-	REQUIRE(vector.size() == v.size());
-	REQUIRE(vector.capacity() == v.capacity());
-}
-SCENARIO("del") 
-{
-	vector_t v={1,2,3,5,7,8,1,2,4};
-	vector_t vector={3,5,7,8,1,2,4 };
-	v.pop_back();
-	v.pop_back();
-	REQUIRE(v==vector);
+   forward_list<int> s = {1, 2, 5, 9};
+   forward_list<int> m = {1, 2, 5, 9};
+    REQUIRE(m == s);
 }
