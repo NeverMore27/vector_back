@@ -15,7 +15,7 @@ TEST_CASE("pop")
     int s = v.pop_back();
     int z = v.pop_front();                     
     REQUIRE(s== 4);
-    REQUIRE(v.count() == 1)                  
+    REQUIRE(v.count() == 1);                
     REQUIRE(z==1);
 }
 TEST_CASE("init list") 
@@ -47,6 +47,14 @@ TEST_CASE("push")
     s.push(5);
     s.push(7);
     REQUIRE(s.count() == 2);
+}
+TEST_CASE("clear") 
+{
+   forward_list<int> s;
+   s.push(5);
+   s.push(7);
+   s.clear();
+   REQUIRE(s.count() == 0);
 }
 
  TEST_CASE("==") 
