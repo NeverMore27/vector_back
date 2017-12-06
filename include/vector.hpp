@@ -14,6 +14,7 @@ private:
 	};
 	node *head;
 	size_t count_;
+	bool isEqual(node* head1, const node* head2);
 	
 public:
 	forward_list() : count_{ 0 }, head{ nullptr } {};
@@ -33,6 +34,7 @@ public:
 	Ty pop_back();
 	Ty pop_front();
 	size_t count();
+	bool operator ==(const forward_list& other);
 	void swap(forward_list& other);
 	void show()
 	 {
@@ -55,6 +57,17 @@ forward_list<Ty>::forward_list(const forward_list& other)
 		this->push_back(pTemp->data);
 		pTemp = pTemp->next;
 	}
+}
+template <class Ty>
+bool forward_list<Ty>::isEqual(const node* head1, const node* head2)
+{
+	return (head1 && head2 ? head1->data == head2->data&&isEqual(head2->next, head1->next) : !head2 && !head1);
+}
+
+template <class Ty>
+bool forward_list<Ty>:: operator ==(const forward_list& other)
+{
+	return isEqual(head, other.head);
 }
 
 template <class Ty>
