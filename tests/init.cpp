@@ -3,13 +3,13 @@
 #include <catch.hpp>
 
 
-TEST_CASE("init") 
+SCENARIO("init") 
 {
     forward_list<int> s;
     REQUIRE(s.count() == 0);
     REQUIRE(!s.empty());
 }
-TEST_CASE("pop") 
+SCENARIO("pop") 
 {
     forward_list<int> v={1, 2, 4};
     int s = v.pop_back();
@@ -18,7 +18,7 @@ TEST_CASE("pop")
     REQUIRE(v.count() == 1);                
     REQUIRE(z==1);
 }
-TEST_CASE("init list") 
+SCENARIO("init list") 
 {
     forward_list<int> v={1, 2, 3, 4, 5, 6};
     int s = v.pop_back();
@@ -41,14 +41,14 @@ TEST_CASE("init list")
     REQUIRE(!v.empty());
 }
 
-TEST_CASE("push") 
+SCENARIO("push") 
 {
    forward_list<int> s;
     s.push_back(5);
     s.push_front(7);
     REQUIRE(s.count() == 2);
 }
-TEST_CASE("clear") 
+SCENARIO("clear") 
 {
    forward_list<int> s;
    s.push_back(5);
@@ -56,4 +56,51 @@ TEST_CASE("clear")
    s.clear();
    REQUIRE(s.count() == 0);
 }
+ SCENARIO("==") 
+{
+   forward_list<int> s = {1, 2, 5, 9};
+   forward_list<int> m = {1, 2, 5, 9};
+   REQUIRE((m == s));
+}
+ SCENARIO("move") 
+{
+   forward_list<int> s = {1, 2, 5, 9};
+   forward_list<int> m =std:: move(s);
+   REQUIRE((m == s));
+}
+SCENARIO("copy") 
+{
+   forward_list<int> s = {1, 2, 5, 9};
+   forward_list<int> m =s;
+   REQUIRE((m == s));
+}
+SCENARIO("back") 
+{
+   forward_list<int> s = {1, 2, 4};
+   forward_list<int> m;
+   forward_list<int> m2;
+   m.push_back(1);
+   m.push_back(2);
+   m.push_back(4);
+   m.emplace_back(1);
+   m.emplace_back(2);
+   m.emplace_back(4);
+   REQUIRE((m == s));
+   REQUIRE((m2 == s));
+}
+SCENARIO("front") 
+{
+   forward_list<int> s = {4, 2, 1};
+   forward_list<int> m;
+   forward_list<int> m2;
+   m.push_front(1);
+   m.push_front(2);
+   m.push_front(4);
+   m.emplace_front(1);
+   m.emplace_front(2);
+   m.emplace_front(4);
+   REQUIRE((m == s));
+   REQUIRE((m2 == s));
+}
+
 
