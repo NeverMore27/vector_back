@@ -14,7 +14,7 @@ private:
 	};
 	node *head;
 	size_t count_;
-	bool isEqual(const node* head1, const node* head2);
+	bool isEqual(node* head1, const node* head2);
 public:
 	forward_list() : count_{ 0 }, head{ nullptr } {};
 	forward_list(const forward_list& other);
